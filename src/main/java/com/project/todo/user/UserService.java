@@ -32,4 +32,25 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
+
+    public User getUserById(Long id) {
+        return userRepo.findById(id).orElse(null);
+    }
+
+    public void addNewUser(User newUser) {
+        userRepo.save(newUser);
+    }
+
+    public void deleteUser(Long id) {
+        userRepo.deleteById(id);
+    }
+
+    public void updateUserPassword(Long id, String newPassword) {
+        User existingUser = userRepo.findById(id).orElse(null);
+        if(existingUser == null) {
+            throw new RuntimeException("user with id not found");
+        }
+        existingUser.setPassword(newPassword);
+        userRepo.save(existingUser);
+    }
 }

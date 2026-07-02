@@ -1,0 +1,259 @@
+{
+  "info": {
+    "name": "Student Management API",
+    "description": "CRUD practice collection for Student Management using Spring Boot + JpaRepository default methods",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "student_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/students",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Avi\",\n  \"email\": \"avi@example.com\",\n  \"age\": 21,\n  \"gender\": \"Male\",\n  \"department\": \"CSE\",\n  \"marks\": 87.5,\n  \"attendancePercentage\": 91.2,\n  \"feesPaid\": true,\n  \"status\": \"ACTIVE\",\n  \"city\": \"Coimbatore\",\n  \"phoneNumber\": \"9876543210\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Bulk Create Students",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/students/bulk",
+        "body": {
+          "mode": "raw",
+          "raw": "[{ \"name\": \"John\", \"email\": \"john@example.com\", \"age\": 20, \"gender\": \"Male\", \"department\": \"ECE\", \"marks\": 75, \"attendancePercentage\": 85, \"feesPaid\": false, \"status\": \"ACTIVE\", \"city\": \"Chennai\", \"phoneNumber\": \"9999999991\" }]"
+        }
+      }
+    },
+    {
+      "name": "Get All Students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students"
+      }
+    },
+    {
+      "name": "Get Student By ID",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/{{student_id}}"
+      }
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/students/{{student_id}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Avi\",\n  \"email\": \"updatedavi@example.com\",\n  \"age\": 22,\n  \"gender\": \"Male\",\n  \"department\": \"IT\",\n  \"marks\": 90,\n  \"attendancePercentage\": 95,\n  \"feesPaid\": true,\n  \"status\": \"ACTIVE\",\n  \"city\": \"Coimbatore\",\n  \"phoneNumber\": \"9876543211\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Patch Marks",
+      "request": {
+        "method": "PATCH",
+        "url": "{{base_url}}/students/{{student_id}}/marks?marks=95"
+      }
+    },
+    {
+      "name": "Patch Attendance",
+      "request": {
+        "method": "PATCH",
+        "url": "{{base_url}}/students/{{student_id}}/attendance?attendance=98"
+      }
+    },
+    {
+      "name": "Patch Status",
+      "request": {
+        "method": "PATCH",
+        "url": "{{base_url}}/students/{{student_id}}/status?status=INACTIVE"
+      }
+    },
+    {
+      "name": "Patch Fees",
+      "request": {
+        "method": "PATCH",
+        "url": "{{base_url}}/students/{{student_id}}/fees?feesPaid=true"
+      }
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base_url}}/students/{{student_id}}"
+      }
+    },
+    {
+      "name": "Delete All Students",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base_url}}/students"
+      }
+    },
+    {
+      "name": "Filter By Department",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/department/CSE"
+      }
+    },
+    {
+      "name": "Filter By City",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/city/Coimbatore"
+      }
+    },
+    {
+      "name": "Filter By Status",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/status/ACTIVE"
+      }
+    },
+    {
+      "name": "Filter Marks",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/filter/marks?minMarks=75"
+      }
+    },
+    {
+      "name": "Filter Attendance",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/filter/attendance?maxAttendance=80"
+      }
+    },
+    {
+      "name": "Filter Age",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/filter/age?minAge=18&maxAge=25"
+      }
+    },
+    {
+      "name": "Filter Fees Paid",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/filter/fees-paid"
+      }
+    },
+    {
+      "name": "Top 5 Students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/top-5"
+      }
+    },
+    {
+      "name": "Top 10 Students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/top-10"
+      }
+    },
+    {
+      "name": "Pagination",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/page?page=0&size=5"
+      }
+    },
+    {
+      "name": "Sort By Name",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/sort/name?direction=asc"
+      }
+    },
+    {
+      "name": "Sort By Marks",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/sort/marks?direction=desc"
+      }
+    },
+    {
+      "name": "Count All Students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/count"
+      }
+    },
+    {
+      "name": "Count Department",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/count/department/CSE"
+      }
+    },
+    {
+      "name": "Count Status",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/count/status/ACTIVE"
+      }
+    },
+    {
+      "name": "Count Fees Paid",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/count/fees-paid"
+      }
+    },
+    {
+      "name": "Check Exists",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/exists/{{student_id}}"
+      }
+    },
+    {
+      "name": "Get Multiple Students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/multiple?ids=1,2,3"
+      }
+    },
+    {
+      "name": "Limit By Department",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/students/limit-by-department/CSE?limit=3"
+      }
+    }
+  ]
+}

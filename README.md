@@ -1,6 +1,6 @@
 # Student Management API Documentation
 
-<a href="" download> click here to donwload the postman collection </a>
+<a href="https://github.com/byts-india/springboot-todo-project/blob/main/collections/task-02-post-man-collection.json" download> click here to donwload the postman collection </a>
 
 ## 1. Student Table Schema
 
